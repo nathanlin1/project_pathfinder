@@ -1,0 +1,1 @@
+import{r as o}from"./index.D9mrT8mP.js";function l(r,{threshold:t=.1,deps:c=[]}={}){o.useEffect(()=>{const s=new IntersectionObserver(e=>{e.forEach(n=>{n.isIntersecting&&n.target.classList.add("animate-in")})},{threshold:t});return r.current?.querySelectorAll(".reveal")?.forEach(e=>s.observe(e)),()=>s.disconnect()},[r,t,...c])}export{l as u};
