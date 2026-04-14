@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Experience from '../components/Experience';
+import Projects from '../components/Projects';
+import Skills from '../components/Skills';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+---
+
+<Layout>
+  <!-- Interactive star background -->
+  <Starfield client:load />
+  
+  <!-- Navigation -->
+  <Navbar client:load />
+  
+  <!-- Main content -->
+  <main class="relative z-10">
+    <Hero client:load />
+    <About client:visible />
+    
+    <div class="glow-line mx-auto max-w-md" />
+    
+    <Experience client:visible />
+    
+    <div class="glow-line mx-auto max-w-md" />
+    
+    <Projects client:visible />
+    
+    <div class="glow-line mx-auto max-w-md" />
+    
+    <Skills client:visible />
+    
+    <div class="glow-line mx-auto max-w-md" />
+    
+    <div class="min-h-screen flex flex-col snap-start">
+      <Contact client:visible />
+      <Footer client:load />
+    </div>
+  </main>
+</Layout>
