@@ -6,7 +6,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  base: '/project_pathfinder/',
   integrations: [react()],
 
   vite: {

@@ -9,7 +9,13 @@ export default function Starfield() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Honor reduced-motion preference — skip animation entirely
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     let animationId: number;
+    let resizeTimer: number | undefined;
     let stars: { x: number; y: number; z: number; opacity: number; speed: number }[] = [];
     let shootingStars: { x: number; y: number; vx: number; vy: number; life: number; maxLife: number; length: number }[] = [];
 
@@ -124,12 +130,18 @@ export default function Starfield() {
       ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
     };
 
+    const handleResize = () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(resize, 150);
+    };
+
     resize();
     animate();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
+      window.clearTimeout(resizeTimer);
       cancelAnimationFrame(animationId);
     };
   }, []);
