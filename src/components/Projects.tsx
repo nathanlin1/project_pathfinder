@@ -10,7 +10,7 @@ type Repo = {
   fork: boolean;
 };
 
-const EXCLUDED_REPOS = new Set(['risposta.org', 'borealis', 'diligent', 'nathanlin1']);
+const EXCLUDED_REPOS = new Set(['risposta.org', 'borealis', 'diligent', 'nathanlin1', 'project_pathfinder']);
 
 const projects = [
   {
